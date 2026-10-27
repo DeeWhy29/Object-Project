@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Object Practical</h1>
+    <p>Bank Account Simulator</p>
+    <p></p>
+
+
+    <script>
+
+        // Number 1
+
+        let Account = {
+            owner: "Ahmad",
+            balance: 5000,
+            pin: "1234",
+
+            deposit(amount) {
+                this.balance += amount;
+                return "New balance is " + this.balance;
+            },
+            withdraw(amount){
+                if(amount > this.balance){
+                    return 'insufficient funds';
+                } else{
+                    this.balance -= amount;
+                    return "Balance is" + this.balance
+                }               
+             },
+            checkBalance(){
+                return "Balance is " + this.balance;
+            }
+            
+        };
+        console.log(Account.deposit(2000));
+        console.log(Account.withdraw(1000));
+        console.log(Account.withdraw(10000));
+        console.log(Account.checkBalance());
+
+        // Number 2
+
+        const order = {
+            orderId: 101,
+
+            customer: {
+                name: "Tunde",
+                email: "tunde@gmail.com",
+                address: "Oshogbo, Osun State"
+            },
+            product: {
+                name: "shoe",
+                price: 10000,
+                quantity: 2
+            },
+            isDelivered: false,
+
+            totalprice(){
+                return this.product.price * this.product.quantity;
+            },
+            summary(){
+                return "order" +" " +this.orderId + " " +" "+
+                this.customer.name +" " + "ordered" + " "+
+                this.product.quantity + "x" +" "+
+                this.product.name +" " +"="+ " "+
+                this.totalprice();
+            }
+        };
+        console.log(order.totalprice());
+        console.log(order.summary());
+
+        // Destructuring 
+        const { name } = order.customer;
+        console.log(name);
+
+        // Number 3 
+        const book = {
+            title: "JS for Beginners",
+            author: "John Doe",
+            pages: 200,
+            isRead: false,
+        
+
+            readbook(){
+                this.isRead= true;
+            },
+
+            addinfo(publisher, year){
+                this.pulisher = publisher;
+                this.year = year;
+            }
+        };
+
+        book.readbook();
+        console.log(book.isRead);
+
+        book.addinfo("Tech Books Ltd", 2026);
+        console.log(book);
+
+
+        
+    </script>
+</body>
+</html>
